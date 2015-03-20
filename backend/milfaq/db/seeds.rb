@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Perfil.create(descricao: 'Leitor', created_at: Time.now)
+Perfil.create(descricao: 'Relator', created_at: Time.now)
+Perfil.create(descricao: 'Administrador', created_at: Time.now)
+
+Status.create(descricao: 'Em Aberto')
+Status.create(descricao: 'Resolvido')
