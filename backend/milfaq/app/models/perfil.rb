@@ -1,4 +1,4 @@
 class Perfil < ActiveRecord::Base
-	validates :descricao, presence: true,
-                      	  uniqueness: true
+	#validates :descricao, presence: true,
+    #                  	  uniqueness: true
 end

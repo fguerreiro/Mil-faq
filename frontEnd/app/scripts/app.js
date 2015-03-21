@@ -7,20 +7,19 @@
 *
 * Main module of the application.
 */
-angular
-  .module('milfaqApp', [
-    'ngAnimate',
-    'ngAria',
-    'ngCookies',
-    'ngMessages',
-    'ngResource',
-    'ui.router',
-    'ngSanitize',
-    'ngTouch',
-    'usersFactory',
-  ])
+var milfaqApp = angular.module( 'milfaqApp', [
+                                'ngAnimate',
+                                'ngAria',
+                                'ngCookies',
+                                'ngMessages',
+                                'ngResource',
+                                'ui.router',
+                                'ngSanitize',
+                                'ngTouch',
+                                'usersFactory'
+                              ]);
 
-.config(function ($stateProvider,$urlRouterProvider) {
+milfaqApp.config(function ($stateProvider,$urlRouterProvider) {
    $stateProvider
     .state('/', {
       url:'/',
@@ -49,3 +48,4 @@ angular
     })
    $urlRouterProvider.otherwise('/');
 });
+

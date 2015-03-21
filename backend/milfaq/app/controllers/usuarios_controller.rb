@@ -1,6 +1,10 @@
 class UsuariosController < ApplicationController
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
 
+#  protect_from_forgery :secret => 'any_phrase',  
+#                       :except => :create
+#  skip_before_action :verify_authenticity_token
+
   # GET /usuarios
   # GET /usuarios.json
   def index
@@ -25,7 +29,6 @@ class UsuariosController < ApplicationController
   # POST /usuarios.json
   def create
     @usuario = Usuario.new(usuario_params)
-
     respond_to do |format|
       if @usuario.save
         format.html { redirect_to @usuario, notice: 'Usuario was successfully created.' }
