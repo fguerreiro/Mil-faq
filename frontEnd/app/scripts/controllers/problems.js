@@ -8,6 +8,7 @@
  */
 
 angular.module('milfaqApp')
+
 .controller('ProblemsIndexController', ['$scope', 'problemsFactory', function($scope, problemsFactory) {
        
     $scope.orderByField = 'descricao';
@@ -45,4 +46,20 @@ angular.module('milfaqApp')
     };
 
   $scope.index();
+}])
+
+.controller('ProblemsShowController', ['$scope', '$stateParams', 'problemsFactory', function($scope, $stateParams, problemsFactory) {
+    $scope.problem = problemsFactory.show({id: $stateParams.id});
+
+    problemsFactory.show({id: $stateParams.id}).$promise.then(
+         //sucess
+          function( data ){
+            console.log( data );
+          },
+           //error
+          function( error ){
+            console.log( error );
+            $scope.error = error;
+          }
+      );
 }]);
