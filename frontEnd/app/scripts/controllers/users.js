@@ -16,9 +16,8 @@ angular.module('milfaqApp')
     $scope.reverseSort = false;
 
     $scope.index = function(){
-      //$scope.users = usersFactory.index().$promise.then(
         usersFactory.index().$promise.then(
-        //sucess
+        //success
           function( data ){
             console.log( data );
             $scope.users = data;

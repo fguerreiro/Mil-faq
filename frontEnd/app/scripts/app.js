@@ -16,7 +16,8 @@ var milfaqApp = angular.module( 'milfaqApp', [
                                 'ui.router',
                                 'ngSanitize',
                                 'ngTouch',
-                                'usersFactory'
+                                'usersFactory',
+                                'problemsFactory'
                               ]);
 
 milfaqApp.config(function ($stateProvider,$urlRouterProvider) {
@@ -45,6 +46,11 @@ milfaqApp.config(function ($stateProvider,$urlRouterProvider) {
       url:'/users/:id/edit',
       templateUrl: 'views/users/edit.html',
       controller: 'UsersEditController'
+    })
+    .state('problemsIndex', {
+      url:'/problems',
+      templateUrl: 'views/problems/index.html',
+      controller: 'ProblemsIndexController'
     })
    $urlRouterProvider.otherwise('/');
 });
