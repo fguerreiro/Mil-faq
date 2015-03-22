@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Perfil.create(descricao: 'Leitor', perfil_id: 1, created_at: Time.now)
-Perfil.create(descricao: 'Relator', perfil_id: 2, created_at: Time.now)
-Perfil.create(descricao: 'Administrador', perfil_id: 3, created_at: Time.now)
+Perfil.create(descricao: 'Leitor', created_at: Time.now.strftime("%d/%m/%Y %H:%M"))
+Perfil.create(descricao: 'Relator', created_at: Time.now.strftime("%d/%m/%Y %H:%M"))
+Perfil.create(descricao: 'Administrador', created_at: Time.now.strftime("%d/%m/%Y %H:%M"))
 
-Status.create(descricao: 'Em Aberto')
-Status.create(descricao: 'Resolvido')
+#Status.create(descricao: 'Em Aberto', status_id: 1)
+#Status.create(descricao: 'Resolvido', status_id: 2)

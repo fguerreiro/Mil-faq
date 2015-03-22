@@ -28,6 +28,7 @@ class ProblemasController < ApplicationController
 
     respond_to do |format|
       if @problema.save
+        console.log(@problema)
         format.html { redirect_to @problema, notice: 'Problema was successfully created.' }
         format.json { render :show, status: :created, location: @problema }
       else
