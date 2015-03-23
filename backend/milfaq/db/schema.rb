@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150322231150) do
+ActiveRecord::Schema.define(version: 20150323131354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,8 +48,12 @@ ActiveRecord::Schema.define(version: 20150322231150) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "sobrenome"
+    t.integer  "perfil_id"
   end
+
+  add_index "usuarios", ["perfil_id"], name: "index_usuarios_on_perfil_id", using: :btree
 
   add_foreign_key "problemas", "statuses"
   add_foreign_key "problemas", "usuarios"
+  add_foreign_key "usuarios", "perfis"
 end

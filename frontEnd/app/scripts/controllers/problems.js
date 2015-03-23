@@ -9,8 +9,7 @@
 
 angular.module('milfaqApp')
 
-.controller('ProblemsIndexController', ['$scope', 'problemsFactory', 'usersFactory',  function($scope, problemsFactory, usersFactory) {
-       
+.controller('ProblemsIndexController', ['$scope', 'problemsFactory', 'usersFactory',  function($scope, problemsFactory, usersFactory) {    
     $scope.orderByField = 'descricao';
     $scope.reverseSort = false;
 
@@ -47,8 +46,8 @@ angular.module('milfaqApp')
         );
     };
 
-    $scope.destroy = function(user) {
-        problemsFactory.destroy({id: problems.id}).$promise.then(
+    $scope.destroy = function(problem) {
+        problemsFactory.destroy({id: problem.id}).$promise.then(
           //sucess
           function( data ){
             console.log( data );
@@ -81,15 +80,9 @@ angular.module('milfaqApp')
 }])
 
 .controller('ProblemsNewController', ['$scope', '$stateParams','$state', 'problemsFactory', function($scope, $stateParams, $state ,problemsFactory) {
-    
-
-    console.log('Entrou no Controller ProblemsNew');
     $scope.problems = {};
 
     $scope.save = function() {
-        console.log('Entrou no Controller ProblemsNew - funcao save');
-        console.log('Problemas -> ');
-        console.log($scope.problems);
         problemsFactory.create($scope.problems).$promise.then(
         //sucess
         function( data ){
@@ -107,8 +100,7 @@ angular.module('milfaqApp')
 
 }])
 
-.controller('ProblemsEditController', ['$scope', '$stateParams','$state', 'problemsFactory', function($scope, $stateParams, $state, problemsFactory) {
-    
+.controller('ProblemsEditController', ['$scope', '$stateParams','$state', 'problemsFactory', function($scope, $stateParams, $state, problemsFactory) {    
     $scope.problems = {};
 
     $scope.update = function() {

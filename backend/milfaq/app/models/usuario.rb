@@ -1,5 +1,5 @@
 class Usuario < ActiveRecord::Base
-	belongs_to :perfil
+	has_one :perfil
 	belongs_to :problema, :foreign_key => 'relator'
 	#has_one :problema, :foreign_key => 'relator'
 	#validates :nome, presence: true
@@ -13,4 +13,9 @@ class Usuario < ActiveRecord::Base
 	def nome_completo
 		self.nome + " " + self.sobrenome
 	end
+
+	def nome_perfil
+		p = Perfil.find(self.id)
+		p.descricao
+	end 
 end

@@ -10,5 +10,5 @@ angular.module('problemsFactory',['usersFactory'])
 		'update':  { method: 'PUT' },
 		'destroy': { method: 'DELETE' }
 	}
-	);
+);
 }]);

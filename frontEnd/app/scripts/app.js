@@ -66,7 +66,7 @@ milfaqApp.config(function ($stateProvider,$urlRouterProvider) {
       url:'/problems/:id/edit',
       templateUrl: 'views/problems/edit.html',
       controller: 'ProblemsEditController'
-    })
+    });
    $urlRouterProvider.otherwise('/');
 });
 
