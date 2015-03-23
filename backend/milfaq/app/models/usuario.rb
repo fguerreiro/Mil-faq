@@ -1,5 +1,6 @@
 class Usuario < ActiveRecord::Base
 	belongs_to :perfil
+	belongs_to :problema
 	#has_one :problema, :foreign_key => 'relator'
 	#validates :nome, presence: true
 	#validates :sobrenome, presence: true

@@ -1,5 +1,6 @@
 <fieldset>
     <legend>Lista de Problemas</legend>
+    Usuarios: {{ users }}
 </fieldset>
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -13,6 +14,7 @@
                     <tr>
                         <th ng-click="orderByField='id'; reverseSort = !reverseSort">#</th>
                         <th ng-click="orderByField='descricao'; reverseSort = !reverseSort">Descrição</th>
+                        <th ng-click="orderByField='descricao'; reverseSort = !reverseSort">Relator</th>
                         <th ng-click="orderByField='status'; reverseSort = !reverseSort">Status</th>
                         <th>Ações</th>
                     </tr>
@@ -21,6 +23,7 @@
                     <tr ng-repeat="problem in problems | filter:busca | orderBy:orderByField:reverseSort">
                         <td>{{problem.id}}</td>
                         <td><i class="glyphicon glyphicon-user"></i> {{problem.descricao}}</td>
+                        <td><i class="glyphicon glyphicon-user"></i> {{ problem.user }}</td>
                         <td><i class="glyphicon glyphicon-user"></i> {{problem.status}}</td>
                         <td>
                             <a class="btn btn-sm btn-default" ui-sref="problemsShow({id:problem.id})"><i class="glyphicon glyphicon-eye-open"></i></a>

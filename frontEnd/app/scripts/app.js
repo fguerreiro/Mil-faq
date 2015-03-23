@@ -57,6 +57,16 @@ milfaqApp.config(function ($stateProvider,$urlRouterProvider) {
       templateUrl: 'views/problems/show.html',
       controller: 'ProblemsShowController'
     })
+    .state('problemsNew', {
+      url:'/problems/new',
+      templateUrl: 'views/problems/new.html',
+      controller: 'ProblemsNewController'
+    })
+    .state('problemsEdit', {
+      url:'/problems/:id/edit',
+      templateUrl: 'views/problems/edit.html',
+      controller: 'ProblemsEditController'
+    })
    $urlRouterProvider.otherwise('/');
 });
 

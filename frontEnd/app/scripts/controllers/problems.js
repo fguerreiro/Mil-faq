@@ -9,14 +9,14 @@
 
 angular.module('milfaqApp')
 
-.controller('ProblemsIndexController', ['$scope', 'problemsFactory', function($scope, problemsFactory) {
+.controller('ProblemsIndexController', ['$scope', 'problemsFactory', 'usersFactory',  function($scope, problemsFactory, usersFactory) {
        
     $scope.orderByField = 'descricao';
     $scope.reverseSort = false;
 
     $scope.index = function(){
         problemsFactory.index().$promise.then(
-        //success
+          //success
           function( data ){
             console.log( data );
             $scope.problems = data;
@@ -27,6 +27,22 @@ angular.module('milfaqApp')
             console.log( error );
             $scope.error = error;
           }
+
+        );
+        usersFactory.index().$promise.then(
+          //success
+          function( data ){
+            console.log( data );
+            $scope.users = data;
+            
+          },
+          //error
+          function( error ){
+            console.log( error );
+            $scope.error = error;
+          }
+
+
 
         );
     };
@@ -62,4 +78,63 @@ angular.module('milfaqApp')
             $scope.error = error;
           }
       );
+}])
+
+.controller('ProblemsNewController', ['$scope', '$stateParams','$state', 'problemsFactory', function($scope, $stateParams, $state ,problemsFactory) {
+    
+
+    console.log('Entrou no Controller ProblemsNew');
+    $scope.problems = {};
+
+    $scope.save = function() {
+        console.log('Entrou no Controller ProblemsNew - funcao save');
+        console.log('Problemas -> ');
+        console.log($scope.problems);
+        problemsFactory.create($scope.problems).$promise.then(
+        //sucess
+        function( data ){
+          console.log('Entrou no Controller problemsNew - promise Success - indo para state usersIndex'); 
+          console.log( data );
+          $state.go('problemsIndex');
+        },
+        //error
+        function( error ){
+          console.log('Entrou no Controller problemsNew - promise Fail');
+          console.log( error );
+        }
+      );
+    };
+
+}])
+
+.controller('ProblemsEditController', ['$scope', '$stateParams','$state', 'problemsFactory', function($scope, $stateParams, $state, problemsFactory) {
+    
+    $scope.problems = {};
+
+    $scope.update = function() {
+      console.log($scope.problems);
+      $scope.problems.$update({id: $scope.problems.id}).then(
+        function( data ) {
+          console.log( data );
+          $state.go('problemsIndex');
+        },
+        function( error ){
+          console.log( error );
+        }
+      );
+    };
+
+    $scope.load = function() {
+        $scope.problems = problemsFactory.show({id: $stateParams.id}).$promise.then(
+        //sucess
+        function( data ){
+          $scope.problems = data;
+        },
+        function( error ){
+          console.log ( error );
+        }
+      );
+    };
+
+    $scope.load();
 }]);
